@@ -5,7 +5,7 @@ export class TodoApp extends Component {
 
     state={
         input:"",
-        store:[]
+        items:[]
 
     }
 
@@ -13,20 +13,33 @@ export class TodoApp extends Component {
         this.setState({
             input:event.target.value
         })
-
-    storeItems=()=>{
-        
     }
 
+    storeItems=(event)=>{
+        event.preventDefault();
+
+        const {input} =this.state
+        //const allItems = this.state.items;
+        //allItems.push(input);
         
-    }
+        this.setState({
+            //items: allItems
+            items:[...this.state.items, input]
+        })
+        }
+
+        
+    
     render() {
-        const{input}= this.state;
-
+        const{input, items}= this.state;
+        
         return (
             <div className="todo-container">
 
-                <div className="input-box"><h1>Todo App </h1>
+                <div className="input-box"><h1>Todo App</h1>
+                    
+              
+                
                 <input type= 'text'
                 value={input}
                 onChange={this.handleChange}
@@ -39,11 +52,14 @@ export class TodoApp extends Component {
                     </div>
                 </div>
                 </div>
-
+                <div className="list-container">
                 <ul>
-                    <li>Items</li>
+                    {items.map((data, index)=>(
+                        <li key={index}>{data} <i className="fa fa-trash" aria-hidden="true"></i></li>
+                    ))}
     
                 </ul>
+                </div>
             </div>
 
         )
