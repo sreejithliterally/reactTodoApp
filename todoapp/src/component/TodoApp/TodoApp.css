@@ -64,6 +64,7 @@ ul li i {
   text-align:right;
   flex:1;
   padding-right: 20px;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

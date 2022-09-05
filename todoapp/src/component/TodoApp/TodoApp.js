@@ -15,6 +15,17 @@ export class TodoApp extends Component {
         })
     }
 
+    deleteItem=key=>{
+      /* const allItems = this.state.items;
+      allItems.splice(key,1);
+      this.setState({
+          items:allItems
+      }) */
+      this.setState({
+          items: this.state.items.filter((data, index)=> index!==key)
+      })
+    }
+
     storeItems=(event)=>{
         event.preventDefault();
 
@@ -24,7 +35,8 @@ export class TodoApp extends Component {
         
         this.setState({
             //items: allItems
-            items:[...this.state.items, input]
+            items:[...this.state.items, input],
+            input:""
         })
         }
 
@@ -55,7 +67,7 @@ export class TodoApp extends Component {
                 <div className="list-container">
                 <ul>
                     {items.map((data, index)=>(
-                        <li key={index}>{data} <i className="fa fa-trash" aria-hidden="true"></i></li>
+                        <li key={index}>{data} <i className="fa fa-trash" onClick={()=> this.deleteItem(index)} aria-hidden="true"></i></li>
                     ))}
     
                 </ul>
