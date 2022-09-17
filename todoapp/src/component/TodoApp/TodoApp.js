@@ -28,7 +28,6 @@ export class TodoApp extends Component {
 
     storeItems=(event)=>{
         event.preventDefault();
-
         const {input} =this.state
         //const allItems = this.state.items;
         //allItems.push(input);
